@@ -1,9 +1,16 @@
-pandas
-psycopg2-binary
-sqlalchemy
-openpyxl
-langchain
-langchain-openai
-python-dotenv
-fastapi
-uvicorn
+# Core dependencies
+fastapi==0.104.1
+uvicorn==0.24.0
+python-dotenv==1.0.0
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+pandas==2.1.3
+
+# LangChain and AI
+langchain==0.0.340
+langchain-openai==0.0.2
+openai==1.3.5
+pydantic==2.5.2
+
+# Development
+-e .  # Install local package in editable mode

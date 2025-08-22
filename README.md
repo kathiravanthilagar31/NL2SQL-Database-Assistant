@@ -36,8 +36,15 @@ An intelligent API service that converts natural language questions into SQL que
 ### 2. Installation
 
 ```bash
+# Clone repository
 git clone https://github.com/kathiravanthilagar31/NL2SQL-Database-Assistant.git
 cd NL2SQL-Database-Assistant
+
+# Create and activate virtual environment
+python -m venv venv
+.\venv\Scripts\activate  # For Windows
+
+# Install all dependencies including local package
 pip install -r requirements.txt
 ```
 
