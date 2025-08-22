@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div id="app-container" class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <button id="new-chat-btn" class="nav-button">+ New Chat</button>
+            </div>
+            <div class="sidebar-search">
+                <input type="text" placeholder="Search chats...">
+            </div>
+            <nav class="sidebar-nav">
+                <ul id="chat-history-list">
+                    </ul>
+            </nav>
+        </aside>
+        <main class="chat-area">
+            <div class="chat-area-header">
+                <button id="sidebar-toggle-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+                </button>
+                <h2>Database Assistant</h2>
+            </div>
+            <div id="chat-box">
+                </div>
+            <div id="input-container">
+                <div class="input-wrapper">
+                    <input type="text" id="user-input" placeholder="Ask about the database...">
+                    <button id="send-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 11L12 6L17 11M12 18V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <p class="footer-note">AI can make mistakes. Consider checking important information.</p>
+            </div>
+        </main>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
