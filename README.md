@@ -1,21 +1,14 @@
 # Natural Language to SQL Assistant 🔍
 
-An intelligent API service that converts natural language questions into SQL queries for healthcare data analysis using LangChain, GPT-4, and FastAPI.
+An intelligent API service that converts natural language questions into SQL queries using LangChain, GPT-4, and FastAPI.
 
 ## ✨ Features
-
-* **Natural Language Understanding**: 
-    * Converts English questions into optimized PostgreSQL queries
-    * Maintains conversation history for context
-    * Generates human-readable summaries of query results
-* **Healthcare Data Analysis**: 
-    * Specialized for oncology database querying
-    * Handles complex medical data relationships
-    * Supports various medical entities (patients, treatments, diagnoses)
-* **AI-Powered Responses**:
-    * Automatic query generation using GPT-4
-    * Smart response handling (greetings, clarifications, refusals)
-    * Dynamic conversation title generation
+* Natural language to SQL conversion
+* Context-aware query generation
+* Conversation history support
+* Query optimization and validation
+* Schema-aware SQL generation
+* Comprehensive error handling
 
 ## 🛠️ Tech Stack
 
@@ -43,12 +36,31 @@ An intelligent API service that converts natural language questions into SQL que
 ### 2. Installation
 
 ```bash
-git clone <your-repository-url>
-cd <your-repository-name>
+git clone https://github.com/kathiravanthilagar31/NL2SQL-Database-Assistant.git
+cd NL2SQL-Database-Assistant
 pip install -r requirements.txt
 ```
 
-### 3. Environment Setup
+### 3. Database Setup
+
+1. Create PostgreSQL database:
+```sql
+CREATE DATABASE your_database_name;
+```
+
+2. Import schema:
+```bash
+psql -U your_username -d your_database_name -f data/schema.sql
+```
+
+3. Verify schema files location:
+```plaintext
+data/
+├── ddl.txt          # Contains table definitions
+└── documentation.txt # Contains schema documentation
+```
+
+### 4. Environment Setup
 
 Create a `.env` file in the project root:
 
@@ -59,22 +71,6 @@ DB_PASSWORD="your_db_password"
 DB_HOST="localhost"
 DB_PORT="5432"
 DB_NAME="your_db_name"
-```
-
-### 4. Project Structure
-
-```plaintext
-NL to SQL/
-├── src/
-│   ├── __init__.py
-│   ├── helper.py      # Database and AI utility functions
-│   └── prompt.py      # LangChain prompt templates
-├── data/
-│   ├── ddl_health.txt          # Database schema
-│   └── documentation_health.txt # Schema documentation
-├── main.py           # FastAPI application
-├── requirements.txt  # Project dependencies
-└── README.md
 ```
 
 ### 5. Running the Service
@@ -91,39 +87,42 @@ Processes natural language questions and returns SQL results.
 ```python
 # Example request
 {
-    "question": "How many patients are in Stage IV?",
+    "question": "Your natural language question",
     "history": [
         {"role": "user", "content": "previous question"},
         {"role": "assistant", "content": "previous answer"}
     ]
+}
+
+# Example response
+{
+    "summary": "Human readable summary of results",
+    "sql_query": "Generated SQL query"
 }
 ```
 
 ### POST /generate-title
 Generates a title for the conversation based on context.
 
-## 📝 Example Questions
+## 🔧 Project Structure
 
-The assistant handles various healthcare queries:
-* Patient statistics
-* Treatment outcomes
-* Doctor-patient relationships
-* Medical procedures
-* Lab results analysis
+```plaintext
+project/
+├── src/
+│   ├── __init__.py
+│   ├── helper.py      # Database and AI utilities
+│   └── prompt.py      # LangChain prompt templates
+├── data/
+│   ├── ddl.txt       # Schema definitions
+│   └── documentation.txt
+├── main.py           # FastAPI application
+├── requirements.txt
+└── README.md
+```
 
-## 🔧 Development
+## 📝 Development
 
 Key components:
 * `main.py`: FastAPI application and route handlers
 * `helper.py`: Core functionality for database operations and AI processing
 * `prompt.py`: LangChain prompt templates for AI interactions
-
-## 📚 Database Schema
-
-The system works with a healthcare database including tables for:
-* Patient records
-* Cancer diagnoses
-* Treatment plans
-* Medical procedures
-* Lab results
-* Doctor notes
